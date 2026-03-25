@@ -217,6 +217,58 @@
 
     .status-dot { animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: 0.5 } }
+
+    /* Interactive PH Logo */
+    .ph-logo {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      z-index: 1;
+    }
+    .ph-logo::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+      background-size: 300% 300%;
+      animation: ph-border-spin 3s linear infinite;
+      z-index: -1;
+    }
+    .ph-logo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #a855f7 0%, #0ea5e9 50%, #84cc16 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    .ph-logo:hover {
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow:
+        0 0 20px color-mix(in oklab, var(--primary) 50%, transparent),
+        0 0 40px color-mix(in oklab, var(--secondary) 30%, transparent),
+        0 0 60px color-mix(in oklab, var(--primary) 15%, transparent);
+    }
+    .ph-logo:hover::after {
+      opacity: 1;
+    }
+    @keyframes ph-border-spin {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .ph-logo-pulse {
+      animation: ph-idle-pulse 3s ease-in-out infinite;
+    }
+    @keyframes ph-idle-pulse {
+      0%, 100% { box-shadow: 0 0 8px color-mix(in oklab, var(--primary) 30%, transparent); }
+      50% { box-shadow: 0 0 20px color-mix(in oklab, var(--primary) 60%, transparent), 0 0 40px color-mix(in oklab, var(--secondary) 20%, transparent); }
+    }
   </style>
 </head>
 <body>
@@ -364,10 +416,11 @@
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <a href="#" className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">
-                  {studentData.initials}
+                <div className="ph-logo ph-logo-pulse w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm overflow-hidden" style={{transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)'}}>
+                  <span style={{position: 'absolute', transition: 'all 0.4s ease', opacity: scrolled ? 0 : 1, transform: scrolled ? 'scale(0.5) rotate(90deg)' : 'scale(1) rotate(0deg)'}}>{studentData.initials}</span>
+                  <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover rounded-xl" style={{position: 'absolute', transition: 'all 0.4s ease', opacity: scrolled ? 1 : 0, transform: scrolled ? 'scale(1) rotate(0deg)' : 'scale(0.5) rotate(-90deg)', objectPosition: 'center 20%'}} />
                 </div>
-                <span className="text-lg font-semibold text-white hidden sm:block">{studentData.name}</span>
+                <span className="text-lg font-semibold text-white hidden sm:block group-hover:text-fuchsia-300 transition-colors">{studentData.name}</span>
               </a>
 
               <div className="hidden md:flex items-center gap-8">
@@ -496,11 +549,11 @@
                 </div>
               </div>
 
-              <div className="flex-1 flex justify-center lg:justify-end">
+              <div className="flex-shrink-0 flex justify-center lg:justify-end">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600 to-sky-600 rounded-full blur-3xl opacity-30 animate-pulse-glow"></div>
-                  <div className="relative profile-ring w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden animate-float">
-                    <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover" />
+                  <div className="relative profile-ring w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden animate-float">
+                    <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover" style={{objectPosition: 'center 20%'}} />
                   </div>
                 </div>
               </div>
@@ -1084,7 +1137,7 @@
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm">
+                <div className="ph-logo ph-logo-pulse w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm">
                   {studentData.initials}
                 </div>
                 <span className="text-zinc-400">© {new Date().getFullYear()} {studentData.name}. All rights reserved.</span>
