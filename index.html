@@ -496,12 +496,18 @@
         github: "https://github.com/07pavan",
       },
       about: {
-        short: "Aspiring AI Engineer passionate about Generative AI, Machine Learning, and building practical AI applications.",
-        detailed: `I am an aspiring AI Engineer with a strong interest in Generative AI, Machine Learning, and real-world problem solving. I enjoy building applications that are not just technically sound, but also useful and easy for people to interact with.
-
-I have hands-on experience working with Python, FastAPI, and modern AI frameworks, and I've built projects involving RAG systems, voice-based interfaces, and intelligent automation. These experiences helped me understand how to design systems that combine AI with real user needs.
-
-I am constantly learning and exploring new technologies in AI, especially in areas like LLMs and agent-based systems. I am currently looking for opportunities where I can contribute, grow, and work on impactful AI-driven products.`
+        short: "Aspiring AI Engineer focused on building real-world AI applications using Generative AI, Machine Learning, and AI Agents.",
+        intro: "I'm an aspiring AI Engineer with a strong interest in Generative AI, Machine Learning, and real-world problem solving.",
+        whatIDo: [
+          "Build AI-powered applications (RAG, Voice AI, Chatbots)",
+          "Design AI agent workflows using LLMs for task automation and decision-making",
+          "Work with LLMs, embeddings, and vector databases"
+        ],
+        highlights: [
+          "Built 5+ AI-based projects across different domains",
+          "Developed end-to-end AI solutions from idea to implementation",
+          "Gained hands-on experience through Infosys Springboard internship"
+        ]
       },
       skills: {
         languages: ["Python", "Java"],
@@ -818,35 +824,53 @@ I am constantly learning and exploring new technologies in AI, especially in are
               <div className="w-20 h-1 bg-gradient-to-r from-fuchsia-500 to-sky-500 mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-stretch">
               <div className="reveal">
-                <div className="glass rounded-3xl p-8 hover-lift card-shine">
+                <div className="glass rounded-3xl p-8 h-full hover-lift card-shine">
                   <h3 className="text-2xl font-semibold text-white mb-6">Who I Am</h3>
-                  <p className="text-zinc-400 leading-relaxed mb-6">{studentData.about.detailed}</p>
+                  <div className="text-zinc-400 space-y-4 mb-6">
+                    <p>{studentData.about.intro}</p>
+                    <div>
+                      <h4 className="text-white font-semibold">What I Do</h4>
+                      <ul className="list-disc list-inside space-y-1 mt-2">
+                        {studentData.about.whatIDo.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold">Highlights</h4>
+                      <ul className="list-disc list-inside space-y-1 mt-2">
+                        {studentData.about.highlights.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="glass rounded-xl p-4">
-                      <div className="text-2xl font-bold gradient-text">0+</div>
-                      <div className="text-zinc-500 text-sm">Years Experience</div>
+                      <div className="text-2xl font-bold gradient-text">1</div>
+                      <div className="text-zinc-500 text-sm">Internship Experience</div>
                     </div>
                     <div className="glass rounded-xl p-4">
                       <div className="text-2xl font-bold gradient-text">5+</div>
                       <div className="text-zinc-500 text-sm">Projects Built</div>
                     </div>
                     <div className="glass rounded-xl p-4">
-                      <div className="text-2xl font-bold gradient-text">2+</div>
+                      <div className="text-2xl font-bold gradient-text">3+</div>
                       <div className="text-zinc-500 text-sm">Certifications</div>
                     </div>
                     <div className="glass rounded-xl p-4">
                       <div className="text-2xl font-bold gradient-text">∞</div>
-                      <div className="text-zinc-500 text-sm">Learning Spirit</div>
+                      <div className="text-zinc-500 text-sm">Learning Mindset</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="reveal" style={{ transitionDelay: '0.2s' }}>
-                <div className="glass rounded-3xl p-8 hover-lift card-shine">
+                <div className="glass rounded-3xl p-8 h-full hover-lift card-shine">
                   <h3 className="text-2xl font-semibold text-white mb-6">Quick Info</h3>
 
                   <div className="space-y-4">
