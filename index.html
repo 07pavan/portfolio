@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pavan Hegade | AI Engineer</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -26,7 +29,10 @@
 
   <style>
     * {
-      margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     /* THEME: Neon Aurora */
@@ -35,20 +41,28 @@
       --bg-2: #111220;
       --text: #e4e4e7;
 
-      --primary: #e879f9;          /* fuchsia-400 */
-      --primary-strong: #c026d3;   /* fuchsia-600 */
-      --secondary: #38bdf8;        /* sky-400 */
-      --secondary-strong: #0284c7; /* sky-600 */
-      --accent: #84cc16;           /* lime-500 */
-      --accent-strong: #65a30d;    /* lime-600 */
+      --primary: #e879f9;
+      /* fuchsia-400 */
+      --primary-strong: #c026d3;
+      /* fuchsia-600 */
+      --secondary: #38bdf8;
+      /* sky-400 */
+      --secondary-strong: #0284c7;
+      /* sky-600 */
+      --accent: #84cc16;
+      /* lime-500 */
+      --accent-strong: #65a30d;
+      /* lime-600 */
 
-      --muted: #a1a1aa;            /* zinc-400 */
-      --muted-2: #71717a;          /* zinc-500 */
+      --muted: #a1a1aa;
+      /* zinc-400 */
+      --muted-2: #71717a;
+      /* zinc-500 */
 
-      --glass: rgba(255,255,255,0.03);
-      --glass-strong: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.08);
-      --glass-border-strong: rgba(255,255,255,0.10);
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-strong: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-strong: rgba(255, 255, 255, 0.10);
 
       --grad-1: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
       --grad-2: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -63,9 +77,18 @@
       overflow-x: hidden;
     }
 
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #18181b; }
-    ::-webkit-scrollbar-thumb { background: var(--grad-v); border-radius: 4px; }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #18181b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--grad-v);
+      border-radius: 4px;
+    }
 
     .gradient-bg {
       background: linear-gradient(135deg, var(--bg) 0%, #121226 50%, var(--bg) 100%);
@@ -108,11 +131,9 @@
 
     .gradient-border {
       position: relative;
-      background: linear-gradient(
-        135deg,
-        color-mix(in oklab, var(--primary) 10%, transparent),
-        color-mix(in oklab, var(--secondary) 10%, transparent)
-      );
+      background: linear-gradient(135deg,
+          color-mix(in oklab, var(--primary) 10%, transparent),
+          color-mix(in oklab, var(--secondary) 10%, transparent));
     }
 
     .gradient-border::before {
@@ -128,27 +149,111 @@
       mask-composite: exclude;
     }
 
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink { 50% { border-color: transparent } }
-    @keyframes float { 0%, 100% { transform: translateY(0px) } 50% { transform: translateY(-20px) } }
-    @keyframes pulse-glow { 0%, 100% { opacity: 0.5; transform: scale(1) } 50% { opacity: 0.8; transform: scale(1.05) } }
-    @keyframes slide-up { from { opacity: 0; transform: translateY(60px) } to { opacity: 1; transform: translateY(0) } }
-    @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes typing {
+      from {
+        width: 0
+      }
 
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
-
-    .reveal { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
-    .typing-container { display: inline-block; overflow: hidden; white-space: nowrap; }
-    .typing-text {
-      display: inline-block; overflow: hidden; border-right: 3px solid var(--primary);
-      white-space: nowrap; animation: typing 3s steps(40) infinite alternate, blink 0.7s step-end infinite;
+      to {
+        width: 100%
+      }
     }
 
-    .hover-lift { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-    .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    @keyframes blink {
+      50% {
+        border-color: transparent
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px)
+      }
+
+      50% {
+        transform: translateY(-20px)
+      }
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.05)
+      }
+    }
+
+    @keyframes slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(60px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .typing-container {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .typing-text {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 3px solid var(--primary);
+      white-space: nowrap;
+      animation: typing 3s steps(40) infinite alternate, blink 0.7s step-end infinite;
+    }
+
+    .hover-lift {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
 
     .hover-glow:hover {
       box-shadow:
@@ -156,18 +261,37 @@
         0 0 60px color-mix(in oklab, var(--primary) 20%, transparent);
     }
 
-    .skill-bar { position: relative; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-    .skill-bar-fill {
-      position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px;
-      background: var(--grad-h); transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    .skill-bar {
+      position: relative;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
     }
 
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none; }
+    .skill-bar-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      border-radius: 3px;
+      background: var(--grad-h);
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
       transition: all 0.3s ease;
     }
+
     .btn-primary:hover {
       background: linear-gradient(135deg, #f0abfc 0%, var(--primary) 100%);
       transform: translateY(-2px);
@@ -179,44 +303,100 @@
       border: 2px solid color-mix(in oklab, var(--primary) 50%, transparent);
       transition: all 0.3s ease;
     }
+
     .btn-outline:hover {
       border-color: var(--primary);
       background: color-mix(in oklab, var(--primary) 10%, transparent);
       transform: translateY(-2px);
     }
 
-    .nav-link { position: relative; }
+    .nav-link {
+      position: relative;
+    }
+
     .nav-link::after {
       content: '';
-      position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-      background: var(--grad-h); transition: width 0.3s ease;
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--grad-h);
+      transition: width 0.3s ease;
     }
-    .nav-link:hover::after { width: 100%; }
 
-    .card-shine { position: relative; overflow: hidden; }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .card-shine {
+      position: relative;
+      overflow: hidden;
+    }
+
     .card-shine::before {
       content: '';
-      position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
       transition: left 0.5s ease;
     }
-    .card-shine:hover::before { left: 100%; }
 
-    .filter-btn { transition: all 0.3s ease; }
-    .filter-btn.active { background: var(--grad-2); color: white; }
-
-    .profile-ring { position: relative; }
-    .profile-ring::before {
-      content: '';
-      position: absolute; inset: -4px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-      z-index: -1; animation: rotate 3s linear infinite;
+    .card-shine:hover::before {
+      left: 100%;
     }
 
-    @keyframes rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+    .filter-btn {
+      transition: all 0.3s ease;
+    }
 
-    .status-dot { animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: 0.5 } }
+    .filter-btn.active {
+      background: var(--grad-2);
+      color: white;
+    }
+
+    .profile-ring {
+      position: relative;
+    }
+
+    .profile-ring::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      z-index: -1;
+      animation: rotate 3s linear infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .status-dot {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.5
+      }
+    }
 
     /* Interactive PH Logo */
     .ph-logo {
@@ -226,6 +406,7 @@
       overflow: hidden;
       z-index: 1;
     }
+
     .ph-logo::before {
       content: '';
       position: absolute;
@@ -236,6 +417,7 @@
       animation: ph-border-spin 3s linear infinite;
       z-index: -1;
     }
+
     .ph-logo::after {
       content: '';
       position: absolute;
@@ -246,6 +428,7 @@
       transition: opacity 0.3s ease;
       z-index: -1;
     }
+
     .ph-logo:hover {
       transform: scale(1.15) rotate(-5deg);
       box-shadow:
@@ -253,24 +436,43 @@
         0 0 40px color-mix(in oklab, var(--secondary) 30%, transparent),
         0 0 60px color-mix(in oklab, var(--primary) 15%, transparent);
     }
+
     .ph-logo:hover::after {
       opacity: 1;
     }
+
     @keyframes ph-border-spin {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .ph-logo-pulse {
       animation: ph-idle-pulse 3s ease-in-out infinite;
     }
+
     @keyframes ph-idle-pulse {
-      0%, 100% { box-shadow: 0 0 8px color-mix(in oklab, var(--primary) 30%, transparent); }
-      50% { box-shadow: 0 0 20px color-mix(in oklab, var(--primary) 60%, transparent), 0 0 40px color-mix(in oklab, var(--secondary) 20%, transparent); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 8px color-mix(in oklab, var(--primary) 30%, transparent);
+      }
+
+      50% {
+        box-shadow: 0 0 20px color-mix(in oklab, var(--primary) 60%, transparent), 0 0 40px color-mix(in oklab, var(--secondary) 20%, transparent);
+      }
     }
   </style>
 </head>
+
 <body>
   <div id="root"></div>
 
@@ -278,32 +480,49 @@
     const { useState, useEffect, useRef } = React;
 
     const studentData = {
-      name: "Pavan Hegade",
+      name: "Pavan Hegde",
       initials: "PH",
-      title: "AI Engineer | Generative AI & ML Developer",
+      title: "AI Engineer | Generative AI & Machine Learning Developer",
       profilePic: "https://image2url.com/r2/default/images/1773896825155-3f2b17b3-d3c9-492a-8761-6222556876d1.jpeg",
       resumeUrl: "https://drive.google.com/file/d/1aj0_-GMPFuHobf974nH-sKQyqR21AMfE/view?usp=sharing",
-      typingRoles: ["AI Engineer", "Generative AI Engineer", "Machine Learning Engineer"],
-      tagline: "Turning real-world problems into AI-driven products",
+      typingRoles: ["AI Engineer", "Generative AI Developer", "Machine Learning Enthusiast"],
+      tagline: "I build AI-powered solutions that simplify real-world problems",
       email: "pavanhegade06@gmail.com",
       location: "Bangalore, India",
-      experience: "0",
+      experience: "Fresher",
       primaryDomain: "Artificial Intelligence & Data Science",
       socials: {
         linkedin: "https://www.linkedin.com/in/pavan06/",
         github: "https://github.com/07pavan",
       },
       about: {
-        short: "AI Engineer with a strong interest in Generative AI, Machine Learning, and NLP. I enjoy building real-world AI solutions and continuously learning new technologies to solve meaningful problems",
-        detailed: "I am an aspiring AI Engineer with a strong foundation in Machine Learning, Generative AI, and backend development. I am passionate about building AI-driven solutions to solve real-world problems and improve user experiences. I am proficient in Python, FastAPI, and modern AI frameworks, with knowledge of NLP and system design. I am a continuous learner, always exploring new advancements in AI, and I am seeking opportunities to grow and contribute to impactful work."
+        short: "Aspiring AI Engineer passionate about Generative AI, Machine Learning, and building practical AI applications.",
+        detailed: `I am an aspiring AI Engineer with a strong interest in Generative AI, Machine Learning, and real-world problem solving. I enjoy building applications that are not just technically sound, but also useful and easy for people to interact with.
+
+I have hands-on experience working with Python, FastAPI, and modern AI frameworks, and I've built projects involving RAG systems, voice-based interfaces, and intelligent automation. These experiences helped me understand how to design systems that combine AI with real user needs.
+
+I am constantly learning and exploring new technologies in AI, especially in areas like LLMs and agent-based systems. I am currently looking for opportunities where I can contribute, grow, and work on impactful AI-driven products.`
       },
       skills: {
-        frontend: ["React.js", "HTML5", "CSS3", "Tailwind CSS"],
-        backend: ["Python", "FastAPI", "Flask", "Node.js", "Express.js"],
-        databases: ["MySQL", "PostgreSQL", "MongoDB", "FAISS", "Pinecone", "Chroma"],
-        tools: ["Git", "GitHub", "Streamlit"],
-        aiTools: ["LangChain", "LlamaIndex", "CrewAI", "LangGraph", "Hugging Face", "Cursor"]
+        languages: ["Python", "Java"],
+        aiEngineering: ["Machine Learning", "Generative AI", "Large Language Models (LLMs)", "Retrieval-Augmented Generation (RAG)", "Prompt Engineering"],
+        frameworksLibraries: ["LangChain", "LlamaIndex", "CrewAI", "LangGraph", "Hugging Face Transformers", "Scikit-learn"],
+        backend: ["FastAPI", "Flask"],
+        frontend: ["React.js", "HTML5", "CSS3"],
+        databases: ["MySQL", "PostgreSQL", "MongoDB"],
+        vectorDatabases: ["FAISS", "Pinecone", "Chroma"],
+        tools: ["Git", "GitHub"]
       },
+      experienceData: [
+        {
+          role: "AI Intern",
+          company: "Infosys Springboard",
+          duration: "Jan 2026",
+          type: "Internship",
+          description: "Analyzed large-scale US accident data using Pandas and NumPy, performed geospatial visualization with Folium, and built Tableau dashboards to identify high-risk zones and key correlations with weather and road conditions.",
+          skills: ["Python", "Pandas", "Data Analysis", "Data Visualization"]
+        }
+      ],
       projects: [
         {
           id: 1,
@@ -409,16 +628,16 @@
         return () => window.removeEventListener('scroll', handleScroll);
       }, []);
 
-      const navLinks = ['About', 'Skills', 'Projects', 'Education', 'Certifications', 'Contact'];
+      const navLinks = ['About', 'Skills', 'Experience', 'Projects', 'Education', 'Certifications', 'Contact'];
 
       return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-strong py-3' : 'py-5'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <a href="#" className="flex items-center gap-3 group">
-                <div className="ph-logo ph-logo-pulse w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm overflow-hidden" style={{transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)'}}>
-                  <span style={{position: 'absolute', transition: 'all 0.4s ease', opacity: scrolled ? 0 : 1, transform: scrolled ? 'scale(0.5) rotate(90deg)' : 'scale(1) rotate(0deg)'}}>{studentData.initials}</span>
-                  <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover rounded-xl" style={{position: 'absolute', transition: 'all 0.4s ease', opacity: scrolled ? 1 : 0, transform: scrolled ? 'scale(1) rotate(0deg)' : 'scale(0.5) rotate(-90deg)', objectPosition: 'center 20%'}} />
+                <div className="ph-logo ph-logo-pulse w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-white font-bold text-sm overflow-hidden" style={{ transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+                  <span style={{ position: 'absolute', transition: 'all 0.4s ease', opacity: scrolled ? 0 : 1, transform: scrolled ? 'scale(0.5) rotate(90deg)' : 'scale(1) rotate(0deg)' }}>{studentData.initials}</span>
+                  <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover rounded-xl" style={{ position: 'absolute', transition: 'all 0.4s ease', opacity: scrolled ? 1 : 0, transform: scrolled ? 'scale(1) rotate(0deg)' : 'scale(0.5) rotate(-90deg)', objectPosition: 'center 20%' }} />
                 </div>
                 <span className="text-lg font-semibold text-white hidden sm:block group-hover:text-fuchsia-300 transition-colors">{studentData.name}</span>
               </a>
@@ -497,8 +716,8 @@
         <section id="hero" className="lg:min-h-screen flex items-center justify-center relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-20 lg:pb-0">
           {/* Background elements */}
           <div className="blob w-96 h-96 bg-fuchsia-600 top-20 -left-48 animate-pulse-glow"></div>
-          <div className="blob w-80 h-80 bg-sky-600 bottom-20 -right-40 animate-pulse-glow" style={{animationDelay: '2s'}}></div>
-          <div className="blob w-64 h-64 bg-lime-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse-glow" style={{animationDelay: '1s'}}></div>
+          <div className="blob w-80 h-80 bg-sky-600 bottom-20 -right-40 animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
+          <div className="blob w-64 h-64 bg-lime-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-20">
@@ -533,12 +752,12 @@
                 <div className="flex items-center gap-6 justify-center lg:justify-start">
                   <a href={studentData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-fuchsia-400 transition-colors hover:scale-110 transform">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                   </a>
                   <a href={studentData.socials.github} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-fuchsia-400 transition-colors hover:scale-110 transform">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                   </a>
                   <a href={`mailto:${studentData.email}`} className="text-zinc-500 hover:text-fuchsia-400 transition-colors hover:scale-110 transform">
@@ -553,7 +772,7 @@
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600 to-sky-600 rounded-full blur-3xl opacity-30 animate-pulse-glow"></div>
                   <div className="relative profile-ring w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden animate-float">
-                    <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover" style={{objectPosition: 'center 20%'}} />
+                    <img src={studentData.profilePic} alt={studentData.name} className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
                   </div>
                 </div>
               </div>
@@ -619,7 +838,7 @@
                 </div>
               </div>
 
-              <div className="reveal" style={{transitionDelay: '0.2s'}}>
+              <div className="reveal" style={{ transitionDelay: '0.2s' }}>
                 <div className="glass rounded-3xl p-8 hover-lift card-shine">
                   <h3 className="text-2xl font-semibold text-white mb-6">Quick Info</h3>
 
@@ -698,11 +917,14 @@
       }, []);
 
       const skillCategories = [
-        { name: 'Frontend', skills: studentData.skills.frontend, icon: '🎨', color: 'from-fuchsia-500 to-purple-500' },
+        { name: 'Languages', skills: studentData.skills.languages, icon: '💻', color: 'from-indigo-500 to-violet-500' },
+        { name: 'AI Engineering', skills: studentData.skills.aiEngineering, icon: '🧠', color: 'from-fuchsia-500 to-purple-500' },
+        { name: 'Frameworks & Libraries', skills: studentData.skills.frameworksLibraries, icon: '📦', color: 'from-rose-500 to-pink-500' },
         { name: 'Backend', skills: studentData.skills.backend, icon: '⚙️', color: 'from-sky-500 to-blue-500' },
-        { name: 'Databases', skills: studentData.skills.databases, icon: '🗄️', color: 'from-lime-500 to-teal-500' },
+        { name: 'Frontend', skills: studentData.skills.frontend, icon: '🎨', color: 'from-cyan-500 to-teal-500' },
+        { name: 'Databases', skills: studentData.skills.databases, icon: '🗄️', color: 'from-lime-500 to-emerald-500' },
+        { name: 'Vector Databases', skills: studentData.skills.vectorDatabases, icon: '🔍', color: 'from-violet-500 to-fuchsia-500' },
         { name: 'Tools', skills: studentData.skills.tools, icon: '🛠️', color: 'from-orange-500 to-amber-500' },
-        { name: 'AI Tools', skills: studentData.skills.aiTools, icon: '🤖', color: 'from-rose-500 to-pink-500' },
       ];
 
       return (
@@ -718,7 +940,7 @@
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {skillCategories.map((category, index) => (
-                <div key={category.name} className="reveal glass rounded-2xl p-6 hover-lift card-shine" style={{transitionDelay: `${index * 0.1}s`}}>
+                <div key={category.name} className="reveal glass rounded-2xl p-6 hover-lift card-shine" style={{ transitionDelay: `${index * 0.1}s` }}>
                   <div className="flex items-center gap-3 mb-6">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-2xl`}>
                       {category.icon}
@@ -732,6 +954,66 @@
                         {skill}
                       </span>
                     ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Experience = () => {
+      const sectionRef = useRef(null);
+
+      useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+          });
+        }, { threshold: 0.1 });
+
+        const elements = sectionRef.current.querySelectorAll('.reveal');
+        elements.forEach(el => observer.observe(el));
+        return () => observer.disconnect();
+      }, []);
+
+      return (
+        <section id="experience" ref={sectionRef} className="py-24 relative">
+          <div className="blob w-72 h-72 bg-violet-600 top-0 left-0"></div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16 reveal">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">My <span className="gradient-text">Experience</span></h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-fuchsia-500 to-sky-500 mx-auto rounded-full"></div>
+              <p className="text-zinc-500 mt-4 max-w-2xl mx-auto">Professional experience and internships that shaped my journey</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {studentData.experienceData.map((exp, index) => (
+                <div key={index} className="reveal glass rounded-2xl overflow-hidden hover-lift card-shine group" style={{ transitionDelay: `${index * 0.1}s` }}>
+                  <div className="h-2 bg-gradient-to-r from-fuchsia-500 via-violet-500 to-sky-500"></div>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-fuchsia-400 transition-colors">{exp.role}</h3>
+                        <p className="text-fuchsia-400 font-medium">{exp.company}</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-1">
+                        <span className="px-3 py-1 rounded-full text-xs font-medium bg-violet-500/20 text-violet-400">{exp.type}</span>
+                        <span className="text-zinc-500 text-sm">{exp.duration}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-4">{exp.description}</p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map(skill => (
+                        <span key={skill} className="px-3 py-1.5 glass rounded-lg text-xs text-zinc-300 hover:text-white hover:bg-white/10 transition-all cursor-default">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -785,7 +1067,7 @@
 
             <div className="grid md:grid-cols-2 gap-6">
               {filteredProjects.map((project, index) => (
-                <div key={project.id} className="reveal glass rounded-2xl overflow-hidden hover-lift card-shine group" style={{transitionDelay: `${index * 0.1}s`}}>
+                <div key={project.id} className="reveal glass rounded-2xl overflow-hidden hover-lift card-shine group" style={{ transitionDelay: `${index * 0.1}s` }}>
                   <div className="h-2 bg-gradient-to-r from-fuchsia-500 via-sky-500 to-lime-500"></div>
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-4">
@@ -821,7 +1103,7 @@
                       {project.github && (
                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
                           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                           </svg>
                           GitHub
                         </a>
@@ -863,7 +1145,7 @@
               <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-fuchsia-500 via-sky-500 to-lime-500"></div>
 
               {studentData.education.map((edu, index) => (
-                <div key={index} className="reveal relative mb-12 last:mb-0" style={{transitionDelay: `${index * 0.2}s`}}>
+                <div key={index} className="reveal relative mb-12 last:mb-0" style={{ transitionDelay: `${index * 0.2}s` }}>
                   <div className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-br from-fuchsia-500 to-sky-500 rounded-full -translate-x-1/2 z-10">
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500 to-sky-500 rounded-full animate-ping opacity-30"></div>
@@ -917,7 +1199,7 @@
 
             <div className="grid md:grid-cols-2 gap-6">
               {studentData.certifications.map((cert, index) => (
-                <div key={index} className="reveal glass rounded-2xl p-6 hover-lift card-shine" style={{transitionDelay: `${index * 0.2}s`}}>
+                <div key={index} className="reveal glass rounded-2xl p-6 hover-lift card-shine" style={{ transitionDelay: `${index * 0.2}s` }}>
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-500 to-sky-500 flex items-center justify-center text-2xl shrink-0">
                       🏆
@@ -1059,7 +1341,7 @@
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-sky-500/20 flex items-center justify-center">
                       <svg className="w-5 h-5 text-lime-400" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                       </svg>
                     </div>
                     <div>
@@ -1085,17 +1367,17 @@
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label className="block text-zinc-400 text-sm mb-2">Your Name</label>
-                      <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 glass rounded-xl bg-transparent text-white border border-white/10 focus:border-fuchsia-500 focus:outline-none transition-colors" placeholder="Pavan Hegade" />
+                      <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 glass rounded-xl bg-transparent text-white border border-white/10 focus:border-fuchsia-500 focus:outline-none transition-colors" placeholder="Pavan Hegade" />
                     </div>
 
                     <div>
                       <label className="block text-zinc-400 text-sm mb-2">Your Email</label>
-                      <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 glass rounded-xl bg-transparent text-white border border-white/10 focus:border-fuchsia-500 focus:outline-none transition-colors" placeholder="pavanhegade06@gmail.com" />
+                      <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 glass rounded-xl bg-transparent text-white border border-white/10 focus:border-fuchsia-500 focus:outline-none transition-colors" placeholder="pavanhegade06@gmail.com" />
                     </div>
 
                     <div>
                       <label className="block text-zinc-400 text-sm mb-2">Message</label>
-                      <textarea required rows={4} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full px-4 py-3 glass rounded-xl bg-transparent text-white border border-white/10 focus:border-fuchsia-500 focus:outline-none transition-colors resize-none" placeholder="Write your message here..."></textarea>
+                      <textarea required rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 glass rounded-xl bg-transparent text-white border border-white/10 focus:border-fuchsia-500 focus:outline-none transition-colors resize-none" placeholder="Write your message here..."></textarea>
                     </div>
 
                     {error && (
@@ -1108,8 +1390,8 @@
                       {sending ? (
                         <>
                           <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                           </svg>
                           Sending...
                         </>
@@ -1146,13 +1428,13 @@
               <div className="flex items-center gap-6">
                 <a href={studentData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-fuchsia-400 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                   </svg>
                 </a>
                 <a href={studentData.socials.github} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-fuchsia-400 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
                 </a>
                 <a href={`mailto:${studentData.email}`} className="text-zinc-500 hover:text-fuchsia-400 transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1173,6 +1455,7 @@
           <Hero />
           <About />
           <Skills />
+          <Experience />
           <Projects />
           <Education />
           <Certifications />
@@ -1186,4 +1469,5 @@
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
 </body>
+
 </html>
