@@ -1059,6 +1059,7 @@
       const [filter, setFilter] = useState('All');
       const sectionRef = useRef(null);
 
+      // Initial reveal observer (runs once on mount)
       useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -1070,6 +1071,37 @@
         elements.forEach(el => observer.observe(el));
         return () => observer.disconnect();
       }, []);
+
+      // Re-observe cards whenever filter changes so newly rendered cards become visible
+      useEffect(() => {
+        if (!sectionRef.current) return;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+          });
+        }, { threshold: 0.05 });
+
+        // Small timeout lets React finish rendering the new filtered cards
+        const timer = setTimeout(() => {
+          const elements = sectionRef.current.querySelectorAll('.reveal');
+          elements.forEach(el => {
+            // If the element is already in the viewport, activate it immediately
+            const rect = el.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight && rect.bottom > 0;
+            if (inView) {
+              el.classList.add('active');
+            } else {
+              el.classList.remove('active');
+              observer.observe(el);
+            }
+          });
+        }, 50);
+
+        return () => {
+          clearTimeout(timer);
+          observer.disconnect();
+        };
+      }, [filter]);
 
       const categories = ['All', 'Web App', 'AI Application'];
       const filteredProjects = filter === 'All' ? studentData.projects : studentData.projects.filter(p => p.category === filter);
@@ -1105,7 +1137,7 @@
 
             <div className="grid md:grid-cols-2 gap-6">
               {filteredProjects.map((project, index) => (
-                <div key={project.id} className="reveal bg-deep-forest border border-abyssal rounded-[16px] overflow-hidden group flex flex-col justify-between" style={{ transitionDelay: `${index * 0.1}s`, boxShadow: 'var(--shadow-card)' }}>
+                <div key={`${filter}-${project.id}`} className="reveal bg-deep-forest border border-abyssal rounded-[16px] overflow-hidden group flex flex-col justify-between" style={{ transitionDelay: `${index * 0.08}s`, boxShadow: 'var(--shadow-card)' }}>
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div>
